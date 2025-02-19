@@ -34,14 +34,14 @@ export default function DropDown({handleLogout}) {
               src: 'https://i.pravatar.cc/150?u=a042581f4e29026024d',
             }}
             className="transition-transform"
-            description={`@${userDetails.name}`}
-            name={userDetails.name}
+            description={`@${userDetails.fullName.replace(/\s+/g, '')}`}
+            name={userDetails.fullName}
           />
         </DropdownTrigger>
         <DropdownMenu aria-label="User Actions" variant="flat">
           <DropdownItem key="profile" className="h-14 gap-2">
             <p className="font-bold">Signed in as</p>
-            <p className="font-bold">{`@${userDetails.name}`}</p>
+            <p className="font-bold">{`@${userDetails.fullName}`}</p>
           </DropdownItem>
           <DropdownItem key="settings">My Settings</DropdownItem>
           <DropdownItem key="team_settings">Team Settings</DropdownItem>

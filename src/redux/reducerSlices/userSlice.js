@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    userAuthData: JSON.parse(localStorage.getItem("user")) || '',
+    userAuthData: JSON.parse(localStorage.getItem("user")) || [],
     isLoggedIn: JSON.parse(localStorage.getItem("auth")) || false,
-    userDetails:JSON.parse(localStorage.getItem("userDetails")) || null,
+    userDetails: JSON.parse(localStorage.getItem("userDetails")) || null,
 }
 
 
@@ -11,26 +11,29 @@ export const userSlice = createSlice({
     name: "user",
     initialState,
     reducers: {
-        userLogin: (state,action) => {
+        updatedUser: (state, action) => {
+            state.userAuthData = action.payload
+        },
+        userLogin: (state, action) => {
             state.isLoggedIn = true
             localStorage.setItem("auth", JSON.stringify(state.isLoggedIn))
             state.userDetails = action.payload
-            localStorage.setItem("userDetails",JSON.stringify(state.userDetails))
+            localStorage.setItem("userDetails", JSON.stringify(state.userDetails))
 
         },
-        logoutUser: (state,action) => {
+        logoutUser: (state, action) => {
             state.isLoggedIn = false
             localStorage.setItem("auth", JSON.stringify(state.isLoggedIn))
-            state.userDetails=null
-            localStorage.setItem("userDetails",JSON.stringify(state.userDetails))
+            state.userDetails = null
+            localStorage.setItem("userDetails", JSON.stringify(state.userDetails))
             localStorage.removeItem('cartItems')
-          
+
 
         },
     },
 })
 
 
-export const { userLogin, logoutUser } = userSlice.actions
+export const { userLogin, logoutUser,updatedUser } = userSlice.actions
 
 export default userSlice.reducer

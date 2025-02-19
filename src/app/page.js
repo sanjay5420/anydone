@@ -6,18 +6,14 @@ import Navbar from '@/components/navbar/page'
 import { useFilterCategory } from './hooks/useFilterCategory'
 
 const Home = () => {
-
-  const data = [
-    { name: 'Sanjay', email: 'sanjay@mail.com', password: '1234' },
-    { name: 'Bijay', email: 'bijay@mail.com', password: '5678' },
-    { name: 'Ajay', email: 'ajay@mail.com', password: '9012' }
-  ]
   const { setSelectedCategory, selectedCategory, filteredProducts } = useFilterCategory()
 
-  useEffect(() => {
-    localStorage.setItem("user", JSON.stringify(data))
-  }, [])
 
+  // const data = [
+  //   { name: 'Sanjay', email: 'sanjay@mail.com', password: '1234',phone:1234567890 },
+  //   { name: 'Bijay', email: 'bijay@mail.com', password: '5678',phone:9812345678 },
+  //   { name: 'Ajay', email: 'ajay@mail.com', password: '9012', phone:9888888888 }
+  // ]
   return (
     <div className='min-h-screen'>
       <Navbar />
