@@ -9,6 +9,8 @@ import { removeFromCart } from '@/redux/reducerSlices/cartSlice'
 import DropDown from '../dropdown/page'
 import { useFilterCategory } from '@/app/hooks/useFilterCategory';
 import { Image } from '@heroui/react';
+import { CiSearch } from "react-icons/ci";
+
 
 
 const Navbar = () => {
@@ -34,14 +36,15 @@ const handleClick = (item) =>{
         <div>
             <div className='p-5 w-[80%] m-auto justify-between items-center rounded-lg flex shadow-xl'>
                 <div onClick={()=>router.push('/')}><h1 className='text-2xl font-semibold text-indigo-500 cursor-pointer'>LO|GO</h1></div>
-                <div className='w-[40%]'>
+                <div className='w-[40%] flex border border-gray-500 rounded-2xl p-1'>
                     <input
-                        className='border border-gray-400 rounded-xl p-2 w-full'
+                        className='p-2 w-full rounded-2xl focus:ring-0 focus:outline-none'
                         placeholder='Search Products'
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
                     />
-                   { input !== '' && <div className='absolute rounded-xl w-[32%] shadow-xl p-3 mt-3 bg-white'>
+                     <CiSearch className='text-4xl'/>
+                   { input !== '' && <div className='absolute rounded-xl w-[32%] shadow-xl p-3 mt-11 bg-white'>
                         {searchFilter?.map((item) => {
                             return <div onClick={()=>{handleClick(item)}}  className='h-28 md:w-full border border-indigo-500 mt-3 p-3 rounded-xl flex gap-2 items-center justify-center cursor-pointer'>
                                 <div className='w-[25%] text-center'><Image src={item.image} width={70} height={70} /></div>
@@ -49,7 +52,9 @@ const handleClick = (item) =>{
                                 <div className=' text-indigo-800 w-[35%] text-center'>${item.price}</div>
                             </div>
                         })}
+                        
                     </div>}
+                   
                 </div>
 
                 <div className='flex gap-3 items-center'>

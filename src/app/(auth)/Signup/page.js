@@ -23,7 +23,7 @@ const SignupSchema = Yup.object().shape({
         .max(50, 'invalid!')
         .required('Required'),
     confirmPassword: Yup.string()
-        .oneOf([Yup.ref('password'), null], 'Passwords match')
+        .oneOf([Yup.ref('password'), null], 'Passwords  match')
         .min(3, 'Password do not match.'),
 });
 
@@ -74,21 +74,21 @@ const dispatch = useDispatch()
                         <h1 className='text-3xl font-bold text-indigo-500 text-center mb-5 p-2 '>LO|GO</h1>
                         <Field className="w-full p-2 border rounded-md border-gray-300" name="fullName" placeholder="Enter Your Name" />
                         {errors.fullName && touched.fullName ? (
-                            <div>{errors.fullName}</div>
+                            <div className='text-red-500 text-xs'>{errors.fullName}</div>
                         ) : null}
                         <Field className="w-full p-2 border rounded-md border-gray-300" name="phone" placeholder="Enter Phone Number" />
                         {errors.phone && touched.phone ? (
-                            <div>{errors.phone}</div>
+                            <div className='text-red-500 text-xs'>{errors.phone}</div>
                         ) : null}
                         <Field className="w-full p-2 border rounded-md border-gray-300" name="email" type="email" placeholder="Enter Your Email" />
-                        {errors.email && touched.email ? <div>{errors.email}</div> : null}
+                        {errors.email && touched.email ? <div className='text-red-500 text-xs'>{errors.email}</div> : null}
 
-                        <Field className="w-full p-2 border rounded-md border-gray-300" name="password" type="password" placeholder="Enter Your Password" />
-                        {errors.password && touched.password ? <div>{errors.password}</div> : null}
+                        <Field className="w-full p-2 border rounded-md border-gray-300" name="password" type="password" placeholder="Enter Your Password"/>
+                        {errors.password && touched.password ? <div className='text-red-500 text-xs'>{errors.password}</div> : null}
 
                         <Field className="w-full p-2 border rounded-md border-gray-300" name="confirmPassword" type="password" placeholder="Confirm Password" />
-                        {errors.confirmPassword && touched.confirmPassword ? <div>{errors.confirmPassword}</div> : null}
-                        <button type="submit" className='bg-indigo-500 p-2 rounded-xl text-white mt-4'>Submit</button>
+                        {errors.confirmPassword && touched.confirmPassword ? <div className='text-red-500 text-xs'>{errors.confirmPassword}</div> : null}
+                        <button type="submit" className='bg-indigo-500 p-2 rounded-xl text-white mt-4'>Register</button>
                         <p>Already have an Account ? <Link href={'/Login'} className='font-semibold text-indigo-500'>Login</Link></p>
                     </Form>
                 )}
