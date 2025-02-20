@@ -70,8 +70,8 @@ const dispatch = useDispatch()
                 }}
             >
                 {({ errors, touched }) => (
-                    <Form className='p-9 w-[80%] md:w-[50%] shadow-lg flex flex-col gap-3 rounded-xl'>
-                        <h1 className='text-2xl font-bold text-indigo-500 text-center mb-5 p-2'>SignUp</h1>
+                    <Form className='p-9 w-[80%] md:w-[40%] shadow-lg flex flex-col gap-3 rounded-xl'>
+                        <h1 className='text-3xl font-bold text-indigo-500 text-center mb-5 p-2 '>LO|GO</h1>
                         <Field className="w-full p-2 border rounded-md border-gray-300" name="fullName" placeholder="Enter Your Name" />
                         {errors.fullName && touched.fullName ? (
                             <div>{errors.fullName}</div>

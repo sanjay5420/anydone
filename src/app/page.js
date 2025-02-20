@@ -6,7 +6,7 @@ import Navbar from '@/components/navbar/page'
 import { useFilterCategory } from './hooks/useFilterCategory'
 
 const Home = () => {
-  const { setSelectedCategory, selectedCategory, filteredProducts } = useFilterCategory()
+  const { setSelectedCategory, selectedCategory, filteredProducts,range,setRange,categoryFilter} = useFilterCategory()
 
 
   // const data = [
@@ -19,7 +19,7 @@ const Home = () => {
       <Navbar />
       <div className='flex flex-col md:flex-row w-[80%] m-auto'>
         <div className='w-full md:w-[23%] bg-gray-100 p-5 md:h-screen max-h-fit md:sticky top-0'>
-          <SideBar setSelectedCategory={setSelectedCategory} selectedCategory={selectedCategory} />
+          <SideBar setSelectedCategory={setSelectedCategory} selectedCategory={selectedCategory} range = {range} setRange ={setRange} />
         </div>
         <div className='w-full md:w-[80%] p-5'>
           <ProductList filteredProducts={filteredProducts} />

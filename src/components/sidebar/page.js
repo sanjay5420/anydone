@@ -1,12 +1,11 @@
 'use client'
 import { useFilterCategory } from '@/app/hooks/useFilterCategory'
 import { useRouter } from 'next/navigation'
-import React from 'react'
+import React, { useState } from 'react'
 
-const SideBar = ({setSelectedCategory,selectedCategory}) => {
-    const { allCategories} = useFilterCategory()
+const SideBar = ({ setSelectedCategory, selectedCategory, range, setRange }) => {
+    const { allCategories } = useFilterCategory()
     const router = useRouter()
-
     return (
         <div className='md:h-screen bg-gray-200 p-3 gap-5 flex flex-col rounded-lg'>
             <h1 className='text-md mt-9 font-bold underline underline-offset-8'>Shopping Category</h1>
@@ -21,13 +20,24 @@ const SideBar = ({setSelectedCategory,selectedCategory}) => {
                                 type='radio'
                                 value={item}
                                 checked={item === selectedCategory}
-                                onChange={()=> {setSelectedCategory(item)}}
+                                onChange={() => { setSelectedCategory(item) }}
                             />
                         </div>
                         <div>{item.toUpperCase()}</div>
 
                     </div>
                 })}
+
+                <h1 className='text-md mt-9 font-bold underline underline-offset-8'>Filter By Price.</h1>
+                <input
+                    type='range'
+                    min={10}
+                    max={1500}
+                    value={range}
+                    onChange={(e) => setRange(e.target.value)}
+                    className='mt-4'
+                />
+                <span>Price: ${range} </span>
             </div>
 
 
